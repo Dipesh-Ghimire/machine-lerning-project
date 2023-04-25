@@ -72,3 +72,23 @@ def evaluate_model(X_train, y_train, X_test, y_test, models: dict, params: dict)
         return report
     except Exception as e:
         raise CustomException(e, sys)
+
+def load_object(file_path):
+    """
+     Load a serialized Python object from disk.
+
+     Parameters:
+         file_path (str): The path where the serialized object is saved.
+
+     Raises:
+         CustomException: If any errors occur during the execution of the function.
+
+     Returns:
+         object: The Python object that was serialized and saved.
+     """
+    try:
+        with open(file_path, "rb") as file_obj:
+            return dill.load(file_obj)
+
+    except Exception as e:
+        raise CustomException(e, sys)
