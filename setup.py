@@ -4,7 +4,16 @@ from typing import List
 HYPEN_E_DOT = '-e .'
 
 def get_requirements(file_path:str)->List[str]:
-   # this function returns list of requirements
+   """
+      This function takes a file path as input and returns a list of requirements extracted from the given file.
+      Each requirement is a string without the "\n" character and without the '-e .' substring (if present in the file).
+      
+      :param file_path: A string representing the path of the file containing requirements.
+      :type file_path: str
+      
+      :return: A list of requirements extracted from the file.
+      :rtype: List[str]
+   """
 
    requirements = []
    with open(file_path) as file_obj:

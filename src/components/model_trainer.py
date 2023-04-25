@@ -30,6 +30,15 @@ class ModelTrainer:
     # Output of data_trainsformation becomes input of model_trainer::train_array,test_array
 
     def initiate_model_trainer(self, train_array, test_array):
+        """
+            Args:
+            train_array: A numpy array of shape (n_samples, n_features + 1) containing the training data.
+            test_array: A numpy array of shape (n_samples, n_features + 1) containing the test data.
+            Returns:
+            The R-squared score of the best-performing model.
+            Raises:
+            CustomException: If there is any error during model training or evaluation. Or, if the best model score is less than 0.6.
+        """
         try:
             logging.info("Splitting Training and test Input Data")
             X_train, y_train, X_test, y_test = (

@@ -23,6 +23,14 @@ class DataTransformation:
         self.data_trans_config = DataTransConfig()
 
     def get_data_transformer_object(self):
+        """
+            Creates a preprocessing object that applies one-hot encoding and standard scaling to categorical 
+            and numerical features respectively.
+            Raises:
+                CustomException: If any errors occur during the execution of the function.
+            Returns:
+                A preprocessing object that can be used to transform data.
+        """
         # This function is responsible for Data Transformation : OHE, Standard Scaler
         try:
             num_col = ['writing_score', 'reading_score']
@@ -59,6 +67,16 @@ class DataTransformation:
             raise CustomException(e, sys)
 
     def initiate_data_transformation(self, train_path, test_path):
+        """
+            Reads in the training and test data, applies preprocessing steps to them, and saves the preprocessing object to disk.
+            Parameters:
+            train_path (str): The path to the CSV file containing the training data.
+            test_path (str): The path to the CSV file containing the test data.
+            Raises:
+            CustomException: If any errors occur during the execution of the function.
+            Returns:
+            A tuple containing the transformed training data, transformed test data, and the path to the saved preprocessing object.
+        """
         try:
             train_df = pd.read_csv(train_path)
             test_df = pd.read_csv(test_path)
@@ -81,7 +99,7 @@ class DataTransformation:
 
             logging.info(
                 "Applying pre-processing object on training dataframe and testing dataframe")
-            #Most Crucial Part of Code where preprocessing is actaully done
+            # Most Crucial Part of Code where preprocessing is actaully done
             input_feature_train_arr = preprocessing_obj.fit_transform(
                 input_feature_train_df)
             input_feature_test_arr = preprocessing_obj.transform(
