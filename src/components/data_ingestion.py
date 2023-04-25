@@ -63,4 +63,5 @@ if __name__ == "__main__":
     data_transformation = DataTransformation()
     train_arr,test_arr,_ = data_transformation.initiate_data_transformation(train_data_path, test_data_path)
     model_trainer = ModelTrainer()
-    print(model_trainer.initiate_model_trainer(train_arr, test_arr)) #0.8785718776814511
+    print(model_trainer.initiate_model_trainer(train_arr, test_arr)) 
+    #0.8785718776814511 before 0.8785718776814511 after
